@@ -2,8 +2,7 @@
 namespace Tests\Unit\Components\Autoloader;
 
 use Framework\Components\Autoloader\AutoLoader;
-use Framework\Components\Autoloader\AutoLoaderSetting;
-use Framework\Core\ViewLoader;
+use Framework\Mvc\View\ViewModel;
 
 /**
  * Created by PhpStorm.
@@ -45,7 +44,7 @@ class AutoLoaderTest extends \PHPUnit_Framework_TestCase
     public function testDispatch(){
         $this->autoloader->dispatch();
 
-        $testClass1 = new \Framework\Core\ComponentHandler();
-        $testClass2 = new ViewLoader();
+//        $testClass1 = new \Framework\Core\ComponentHandler();
+        $testClass2 = new ViewModel('');
     }
 }

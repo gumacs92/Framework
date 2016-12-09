@@ -18,15 +18,15 @@ class Localization implements IComponent
     public function init($default = 'en')
     {
         if (isset($_SESSION['lang'])) {
-            if (isset($_REQUEST['l'])) {
-                $_SESSION['lang'] = $_REQUEST['l'];
-                define("LANGUAGE", $_REQUEST['l']);
+            if (isset($_REQUEST['lang'])) {
+                $_SESSION['lang'] = $_REQUEST['lang'];
+                define("LANGUAGE", $_REQUEST['lang']);
             } else {
                 define("LANGUAGE", $_SESSION['lang']);
             }
         } else {
-            $_SESSION['lang'] = isset($_REQUEST['l']) ? $_REQUEST['l'] : $default;
-            define("LANGUAGE", isset($_REQUEST['l']) ? $_REQUEST['l'] : $default);
+            $_SESSION['lang'] = isset($_REQUEST['lang']) ? $_REQUEST['lang'] : $default;
+            define("LANGUAGE", isset($_REQUEST['lang']) ? $_REQUEST['lang'] : $default);
         };
     }
 
