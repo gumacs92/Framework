@@ -1,0 +1,16 @@
+{
+  "name": "gumacs92/framework",
+  "description": "A homemade framework",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "author's name",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+    "phpunit/phpunit": "5.7.2",
+    "gettext/gettext": "v4.1.0"
+  }
+}
