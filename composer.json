@@ -1,16 +1,29 @@
 {
-  "name": "gumacs92/framework",
-  "description": "A homemade framework",
-  "minimum-stability": "stable",
+  "name": "gumacs92/Framework",
+  "type": "library",
+  "description": "A home made lightweight compnent based MVC framework",
+  "minimum-stability": "dev",
   "license": "MIT",
+
   "authors": [
     {
-      "name": "author's name",
-      "email": "email@example.com"
+      "name": "Gellért Márton Guzmics",
+      "email": "gguzmics01@gmail.com"
     }
   ],
+
+  "autoload": {
+    "psr-4": {
+      "Processor\\": "src/"
+    }
+  },
+
   "require": {
-    "phpunit/phpunit": "5.7.2",
+    "php": "^5.3.3 || ^7.0",
     "gettext/gettext": "v4.1.0"
+  },
+
+  "require-dev": {
+    "phpunit/phpunit": "5.7.2"
   }
 }
