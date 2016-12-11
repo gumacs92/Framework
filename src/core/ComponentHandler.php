@@ -22,7 +22,7 @@ class ComponentHandler
         session_start();
 
         // Define path constants
-        if(!defined(DS)){
+        if(!defined("DS")){
             define("DS", DIRECTORY_SEPARATOR);
         }
         define("ROOT", getcwd() . DS);
