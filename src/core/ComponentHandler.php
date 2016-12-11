@@ -22,6 +22,9 @@ class ComponentHandler
         session_start();
 
         // Define path constants
+        if(!defined(DS)){
+            define("DS", DIRECTORY_SEPARATOR);
+        }
         define("ROOT", getcwd() . DS);
         define("APP_PATH", ROOT . isset($settings['app_dir']) ? $settings['app_dir'] : 'application' . DS);
         define("PUBLIC_PATH", ROOT . "public" . DS);
