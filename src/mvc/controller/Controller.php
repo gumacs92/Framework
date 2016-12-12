@@ -4,6 +4,7 @@ namespace Framework\Mvc\Controller;
 // Base Controller
 
 use Framework\Mvc\View\ViewModel;
+use ReflectionClass;
 
 abstract class Controller {
     /* ViewModel $viewModel */
@@ -12,7 +13,8 @@ abstract class Controller {
     //TODO dispatcher
 
     public function __construct(){
-        $controller_path = __DIR__;
+        $reflector = new ReflectionClass(get_class($this));
+        $controller_path = dirname($reflector->getFileName());
         $what = DIRECTORY_SEPARATOR . 'controller';
         $with = DIRECTORY_SEPARATOR . 'view';
         $view_path = preg_replace('#' . $what .'#', $with, $controller_path);
