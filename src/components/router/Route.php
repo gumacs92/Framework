@@ -136,7 +136,7 @@ class Route
     public function execute($uri = '')
     {
         if (empty($uri)) {
-            $uri = $_SERVER['_uri'];
+            $uri = $_REQUEST['_uri'];
         }
 
         if ($this->matchTemplateUri($uri)) {
