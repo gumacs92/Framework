@@ -13,7 +13,9 @@ abstract class Controller {
 
     public function __construct(){
         $controller_path = __DIR__;
-        $view_path = preg_replace('//controller/', '/view', $controller_path);
+        $what = DIRECTORY_SEPARATOR . 'controller';
+        $with = DIRECTORY_SEPARATOR . 'view';
+        $view_path = preg_replace('#' . $what .'#', $with, $controller_path);
 
         $this->viewModel = new ViewModel($view_path);
     }

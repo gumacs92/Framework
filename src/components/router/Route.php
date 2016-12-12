@@ -136,7 +136,12 @@ class Route
     public function execute($uri = '')
     {
         if (empty($uri)) {
-            $uri = $_REQUEST['_uri'];
+            //TODO what if uri is not set
+            $uri = isset($_REQUEST['_uri']) ? $_REQUEST['_uri'] : '';
+
+            if(empty($uri)){
+                return false;
+            }
         }
 
         if ($this->matchTemplateUri($uri)) {
