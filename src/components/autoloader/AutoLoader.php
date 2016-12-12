@@ -11,7 +11,11 @@ use Framework\Abstractions\Interfaces\IComponent;
  * Date: 2016-11-04
  * Time: 04:34 PM
  */
-include $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'abstractions' . DIRECTORY_SEPARATOR .'interfaces' . DIRECTORY_SEPARATOR . 'IComponent.php';
+include __DIR__ .
+    DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' .
+    DIRECTORY_SEPARATOR . 'abstractions' .
+    DIRECTORY_SEPARATOR . 'interfaces' .
+    DIRECTORY_SEPARATOR . 'IComponent.php';
 
 class AutoLoader implements IComponent
 {
@@ -76,7 +80,7 @@ class AutoLoader implements IComponent
 
     public function addDirectory($dirname, $prefix)
     {
-        $this->registeredPaths[] = [ 'dir' => $dirname, 'prefix' => $prefix];
+        $this->registeredPaths[] = ['dir' => $dirname, 'prefix' => $prefix];
     }
 
     /**
