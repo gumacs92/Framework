@@ -141,8 +141,8 @@ class Route
 
         if ($this->matchTemplateUri($uri)) {
             $controller_name =
-                isset($this->uriSettings['namespace']) ? $this->uriSettings['namespace'] . '\\' : '' .
-                isset($this->uriSettings['module']) ? $this->uriSettings['module'] . '\\'  : '' .
+                (isset($this->uriSettings['namespace']) ? $this->uriSettings['namespace'] . '\\' : '') .
+                (isset($this->uriSettings['module']) ? $this->uriSettings['module'] . '\\'  : '') .
                     $this->uriSettings['controller'] . 'Controller';
             $action_name = $this->uriSettings['action'] . 'Action';
             $int = isset($this->uriSettings['int']) ? $this->uriSettings['int'] : null;
