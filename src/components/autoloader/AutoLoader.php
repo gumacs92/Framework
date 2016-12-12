@@ -11,7 +11,7 @@ use Framework\Abstractions\Interfaces\IComponent;
  * Date: 2016-11-04
  * Time: 04:34 PM
  */
-require $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'abstractions' . DIRECTORY_SEPARATOR .'interfaces' . DIRECTORY_SEPARATOR . 'IComponent.php';
+include $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'abstractions' . DIRECTORY_SEPARATOR .'interfaces' . DIRECTORY_SEPARATOR . 'IComponent.php';
 
 class AutoLoader implements IComponent
 {

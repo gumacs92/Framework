@@ -26,23 +26,23 @@ class ComponentHandler
             define("DS", DIRECTORY_SEPARATOR);
         }
         define("ROOT", getcwd() . DS);
-        define("APP_PATH", ROOT . array_key_exists('app_dir', $settings) ? $settings['app_dir'] : 'application' . DS);
+        define("APP_PATH", ROOT . (array_key_exists('app_dir', $settings) ? $settings['app_dir'] : 'application') . DS);
         define("PUBLIC_PATH", ROOT . "public" . DS);
         define("UPLOAD_PATH", PUBLIC_PATH . "uploads" . DS);
         define("VENDOR_PATH", ROOT . "vendor" . DS);
 
-        define("CONFIG_PATH", array_key_exists('app_config_dir', $settings) ? $settings['app_config_dir'] : APP_PATH . 'config' . DS);
+        define("CONFIG_PATH", (array_key_exists('app_config_dir', $settings) ? $settings['app_config_dir'] : APP_PATH . 'config') . DS);
 
-        define("CONTROLLER_PATH", array_key_exists('app_controller_dir', $settings) ? $settings['app_config_dir'] : APP_PATH . "controllers" . DS);
-        define("MODEL_PATH", array_key_exists('app_model_dir', $settings) ? $settings['app_config_dir'] : APP_PATH . "models" . DS);
-        define("VIEW_PATH", array_key_exists('app_view_dir', $settings) ? $settings['app_config_dir'] : APP_PATH . "views" . DS);
-        define("LOCALE_PATH", array_key_exists('app_config_dir', $settings) ? $settings['app_config_dir'] : APP_PATH . "locale" . DS);
+        define("CONTROLLER_PATH", (array_key_exists('app_controller_dir', $settings) ? $settings['app_config_dir'] : APP_PATH . "controllers") . DS);
+        define("MODEL_PATH", (array_key_exists('app_model_dir', $settings) ? $settings['app_config_dir'] : APP_PATH . "models") . DS);
+        define("VIEW_PATH", (array_key_exists('app_view_dir', $settings) ? $settings['app_config_dir'] : APP_PATH . "views") . DS);
+        define("LOCALE_PATH", (array_key_exists('app_config_dir', $settings) ? $settings['app_config_dir'] : APP_PATH . "locale") . DS);
 
-        array_key_exists('load_vendor_autoload', $settings) ? require_once VENDOR_PATH . "autoload.php" : '';
+        (array_key_exists('load_vendor_autoload', $settings) ? require_once VENDOR_PATH . "autoload.php" : '');
 
 
         // Load configuration file
-        $GLOBALS['config'] = include CONFIG_PATH . array_key_exists('app_config_file', $settings) ? $settings['app_config_file'] : "config.php";
+        $GLOBALS['config'] = include CONFIG_PATH . (array_key_exists('app_config_file', $settings) ? $settings['app_config_file'] : "config.php");
     }
 
     public function add($component)
