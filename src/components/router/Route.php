@@ -51,7 +51,7 @@ class Route
         $templates_in_order = [];
 
         foreach ($uri_pieces as $piece) {
-            if (!preg_match('/^([\/]?(:namespace|:module|:controller|:action|:params|:int|(\#[\S]+\#)|[a-zA-Z0-9\_\-]))+$/', $piece)) {
+            if (!preg_match('/^([\/]?(\/|:namespace|:module|:controller|:action|:params|:int|(\#[\S]+\#)|[a-zA-Z0-9\_\-]))+$/', $piece)) {
                 throw new RouteException("Fatal error: Invalid uri: template is malformed");
             }
 
@@ -135,20 +135,18 @@ class Route
 
     public function execute($uri = '')
     {
-        if (empty($uri)) {
-            //TODO what if uri is not set
-            $uri = isset($_REQUEST['_uri']) ? $_REQUEST['_uri'] : '';
 
-            if(empty($uri)){
-                return false;
-            }
+        $uri = (empty($uri) ? (isset($_REQUEST['_uri']) ? $_REQUEST['_uri'] : '') : '');
+
+        if (empty($uri)) {
+            return false;
         }
 
         if ($this->matchTemplateUri($uri)) {
             $controller_name =
                 (isset($this->uriSettings['namespace']) ? $this->uriSettings['namespace'] . '\\' : '') .
-                (isset($this->uriSettings['module']) ? $this->uriSettings['module'] . '\\'  : '') .
-                    $this->uriSettings['controller'] . 'Controller';
+                (isset($this->uriSettings['module']) ? $this->uriSettings['module'] . '\\' : '') .
+                $this->uriSettings['controller'] . 'Controller';
             $action_name = $this->uriSettings['action'] . 'Action';
             $int = isset($this->uriSettings['int']) ? $this->uriSettings['int'] : null;
             $params = isset($this->uriSettings['params']) ? explode('/', $this->uriSettings['params']) : null;
