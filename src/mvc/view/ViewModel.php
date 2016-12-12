@@ -54,7 +54,7 @@ class ViewModel
     public function setAndShowCurrentActionView()
     {
         $action_name = debug_backtrace()[1]['function'];
-        $action = substr($action_name, 0, -6);
+        $action = substr($action_name, 0, -6) . '.php';
         $this->setAndShowView($action);
     }
 }
