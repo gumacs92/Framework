@@ -15,8 +15,8 @@ abstract class Controller {
     public function __construct(){
         $reflector = new ReflectionClass(get_class($this));
         $controller_path = dirname($reflector->getFileName());
-        $what = DIRECTORY_SEPARATOR . 'controllers';
-        $with = DIRECTORY_SEPARATOR . 'views';
+        $what = 'controllers';
+        $with = 'views';
         $view_path = preg_replace('#' . $what .'#', $with, $controller_path);
 
         $this->viewModel = new ViewModel($view_path);

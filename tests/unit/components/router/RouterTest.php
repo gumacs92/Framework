@@ -35,8 +35,27 @@ class RouterTest extends \PHPUnit_Framework_TestCase
             ]));
     }
 
+    public function testPregReplace()
+    {
+        $path = "D:" .
+            DIRECTORY_SEPARATOR . "asdf" .
+            DIRECTORY_SEPARATOR . "asdfas" .
+            DIRECTORY_SEPARATOR . "controllers" .
+            DIRECTORY_SEPARATOR . "dfas";
+        $what = 'controllers';
+        $with = 'views';
+        $view_path = preg_replace('/' . $what . '/', $with, $path);
+        $expected_path = "D:" .
+            DIRECTORY_SEPARATOR . "asdf" .
+            DIRECTORY_SEPARATOR . "asdfas" .
+            DIRECTORY_SEPARATOR . "views" .
+            DIRECTORY_SEPARATOR . "dfas";
+
+        $this->assertEquals($expected_path, $view_path);
+    }
+
     public function testExecute(){
-        $_SERVER['_uri'] = '/test1/12';
+        $_REQUEST['_uri'] = '/test1/12';
         $return = $this->router->dispatch();
 
         $this->assertEquals(true, $return);
