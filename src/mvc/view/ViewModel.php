@@ -8,6 +8,8 @@
 
 namespace Framework\Mvc\View;
 
+use Framework\Abstractions\Exceptions\ViewException;
+
 class ViewModel
 {
     /* @var View $view */
@@ -42,8 +44,12 @@ class ViewModel
 
     public function showView()
     {
-        $view = $this->view->getView();
-        require $view;
+        $view = $this->path . DIRECTORY_SEPARATOR . $this->view->getView();
+        if (file_exists($view)) {
+            require $view;
+            return;
+        }
+        throw new ViewException("Fatal Error: view does not exist: " . $view);
     }
 
     public function setAndShowView($view)
