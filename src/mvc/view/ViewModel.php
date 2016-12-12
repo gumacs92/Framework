@@ -37,7 +37,7 @@ class ViewModel
 
     public function setView($view)
     {
-        $view = new View($this->path, $view);
+        $this->view = new View($this->path, $view);
     }
 
     public function showView()
