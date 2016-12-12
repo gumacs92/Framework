@@ -26,14 +26,19 @@ class View
         $this->view = $view;
     }
 
-    public function showView(){
+    public function showView()
+    {
         $view = $this->path . DIRECTORY_SEPARATOR . $this->view;
         if (file_exists($view)) {
             require $view;
             return;
         }
         throw new ViewException("Fatal Error: view does not exist: " . $view);
+    }
 
+    public function getView()
+    {
+        return $this->view;
     }
 
 

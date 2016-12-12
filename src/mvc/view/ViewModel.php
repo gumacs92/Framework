@@ -42,7 +42,8 @@ class ViewModel
 
     public function showView()
     {
-        $this->view->showView();
+        $view = $this->view->getView();
+        require $view;
     }
 
     public function setAndShowView($view)
