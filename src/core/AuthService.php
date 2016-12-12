@@ -89,15 +89,16 @@ class AuthService
     final static public function hasSufficientAuthority()
     {
         if (isset($_SESSION['auth_level'])) {
-            $path = explode(DS, CURR_CONTROLLER_PATH);
-            $size = sizeof($path);
-            if ($path[$size - 2] == $_SESSION['auth_level']) {
+            //TODO manage the different level of authorities
+//            $path = explode(DS, CURR_CONTROLLER_PATH);
+//            $size = sizeof($path);
+//            if ($path[$size - 2] == $_SESSION['auth_level']) {
                 return true;
-            } else {
-                self::$errorCode = AuthErrorCodes::NOT_RIGHT_LEVEL;
-                self::$errorMessage = "The current level is not sufficient!";
-                return false;
-            }
+//            } else {
+//                self::$errorCode = AuthErrorCodes::NOT_RIGHT_LEVEL;
+//                self::$errorMessage = "The current level is not sufficient!";
+//                return false;
+//            }
         } else {
             self::$errorCode = AuthErrorCodes::NO_AUTH_LEVEL;
             self::$errorMessage = "The current session is not valid, and got unauthenticated!";
