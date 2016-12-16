@@ -28,7 +28,7 @@ abstract class Model
         $dbconfig['charset'] = $GLOBALS['config']['charset'];
 
         $namespace = explode("\\", get_class($this));
-        $classname = $namespace[sizeof($namespace)-1];
+        $classname = $namespace[sizeof($namespace) - 1];
         $table = lcfirst(substr($classname, 0, -5));
 
         $this->database = Database::Database($dbconfig);
@@ -75,7 +75,7 @@ abstract class Model
         if ($result) {
             $list = array();
 
-            while($row = $result->fetch_object($class)){
+            while ($row = $result->fetch_object($class)) {
                 $list[] = $row;
             }
 
@@ -100,11 +100,11 @@ abstract class Model
         $props = $reflection->getProperties(ReflectionProperty::IS_PRIVATE);
 
         //TODO do it more common
-        if(empty($props)){
+        if (empty($props)) {
             $traits = $reflection->getTraits();
-            foreach ($traits as $trait){
+            foreach ($traits as $trait) {
                 $props = $trait->getProperties();
-                if(!empty($props))
+                if (!empty($props))
                     break;
             }
         }
@@ -116,7 +116,11 @@ abstract class Model
             $fieldvalue = $prop->getValue($obj);
             if (!in_array($fieldname, $exceptionprop) && in_array($fieldname, $this->fields)) {
                 $field_list .= $fieldname . ",";
-                $value_list .= (is_numeric($fieldvalue) || is_null($fieldvalue)) ? $fieldvalue . "," : "'" . $fieldvalue . "',";
+                if (is_null($fieldvalue)) {
+                    $value_list .= "null,";
+                } else {
+                    $value_list .= (is_numeric($fieldvalue) ? $fieldvalue . "," : "'" . $fieldvalue . "',");
+                }
             }
         }
 
@@ -129,7 +133,7 @@ abstract class Model
 
         $result = $this->database->query($sql);
 
-        if($result){
+        if ($result) {
             return $this->database->getInsertId();
         } else {
             throw new DatabaseException($this->database->errno() . ": " . $this->database->error(), DatabaseErrorCodes::QUERY_FAILURE);
@@ -152,11 +156,11 @@ abstract class Model
         $props = $reflection->getProperties(ReflectionProperty::IS_PRIVATE);
 
         //TODO do it more common
-        if(empty($props)){
+        if (empty($props)) {
             $traits = $reflection->getTraits();
-            foreach ($traits as $trait){
+            foreach ($traits as $trait) {
                 $props = $trait->getProperties();
-                if(!empty($props))
+                if (!empty($props))
                     break;
             }
         }
@@ -170,8 +174,13 @@ abstract class Model
                 if ($this->primaryfield == $fieldname) {
                     $where = "$fieldname=$fieldvalue";
                 } else {
-                    $updatelist .= "$fieldname=" . ((is_numeric($fieldvalue) || is_null($fieldvalue)) ? "$fieldvalue," : "'$fieldvalue',");
+                    if (is_null($fieldvalue)) {
+                        $updatelist .= "null,";
+                    } else {
+                        $updatelist .= "$fieldname=" . (is_numeric($fieldvalue) ? "$fieldvalue," : "'$fieldvalue',");
+                    }
                 }
+
             }
         }
 
@@ -182,7 +191,7 @@ abstract class Model
         $sql = "UPDATE $this->table SET $updatelist WHERE $where";
         $result = $this->database->query($sql);
 
-        if($result){
+        if ($result) {
             $rows = $this->database->getAffectedRows();
             if ($rows) {
                 return $rows;
@@ -192,7 +201,6 @@ abstract class Model
         } else {
             throw new DatabaseException($this->database->errno() . ": " . $this->database->error(), DatabaseErrorCodes::QUERY_FAILURE);
         }
-
 
 
     }
@@ -222,7 +230,7 @@ abstract class Model
 
         $result = $this->database->query($sql);
 
-        if($result){
+        if ($result) {
             $rows = $this->database->getAffectedRows();
             if ($rows) {
                 return $rows;
