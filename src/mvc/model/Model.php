@@ -119,7 +119,7 @@ abstract class Model
                 if (is_null($fieldvalue)) {
                     $value_list .= "null,";
                 } else {
-                    $value_list .= (is_numeric($fieldvalue) ? $fieldvalue . "," : "'" . $fieldvalue . "',");
+                    $value_list .= is_numeric($fieldvalue) ? $fieldvalue . "," : "'" . $fieldvalue . "',";
                 }
             }
         }
@@ -175,7 +175,7 @@ abstract class Model
                     $where = "$fieldname=$fieldvalue";
                 } else {
                     if (is_null($fieldvalue)) {
-                        $updatelist .= "null,";
+                        $updatelist .= "$fieldname=null,";
                     } else {
                         $updatelist .= "$fieldname=" . (is_numeric($fieldvalue) ? "$fieldvalue," : "'$fieldvalue',");
                     }
