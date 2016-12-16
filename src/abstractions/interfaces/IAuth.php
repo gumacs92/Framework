@@ -9,7 +9,9 @@ namespace Framework\Abstractions\Interfaces;
  */
 interface IAuth
 {
-    public function getIdUser();
+    public function getUniqueId();
 
     public function getAuthLevel();
+
+    public function checkAuthenticity();
 }

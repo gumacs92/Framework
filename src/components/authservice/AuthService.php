@@ -4,6 +4,7 @@ namespace Framework\Core;
 use Framework\Abstractions\Errorcodes\AuthErrorCodes;
 use Framework\Abstractions\Exceptions\AuthServiceException;
 use Framework\Abstractions\Interfaces\IAuth;
+use Framework\Abstractions\Interfaces\IComponent;
 use ReflectionClass;
 
 /**
@@ -15,13 +16,37 @@ use ReflectionClass;
 
 
 
-class AuthService
+class AuthService implements IComponent
 {
     private static $errorCode;
     private static $errorMessage;
 
-    protected function __construct()
-    {
+    final static public function serve(){
+//        try {
+//            if (AuthService::checkAuth()) {
+//                $this->viewModel->setAndShowView('search.php');
+//            } else {
+//                switch (AuthService::getErrorCode()) {
+//                    case AuthErrorCodes::NO_SESSION_AVAILABLE:
+//                        $this->redirect('/login', '');
+//                        break;
+//                    case AuthErrorCodes::NOT_RIGHT_LEVEL:
+//                        $authlevel = AuthService::getSessionAuthLevel();
+//                        $this->redirect('/' . $authlevel, '/camera');
+//                        break;
+//                    default:
+//                        break;
+//                }
+//            }
+//        } catch (AuthServiceException $exception) {
+//            switch ($exception->getCode()) {
+//                case AuthErrorCodes::NO_AUTH_LEVEL:
+//                case AuthErrorCodes::NOT_VALID_SESSION:
+//                default:
+//                    $this->redirect('login/invalidsession', '');
+//                    break;
+//            }
+//        }
     }
 
     final static public function checkAuth()
@@ -113,7 +138,7 @@ class AuthService
     {
         $reflection = new ReflectionClass($usertoauth);
         if ($reflection->implementsInterface('framework\Abstractions\Interfaces\IAuth')) {
-            $id = $usertoauth->getIdUser();
+            $id = $usertoauth->getUniqueId();
             $level = $usertoauth->getAuthLevel();
             if (!empty($id) && !empty($level)) {
                 //TODO token regenerate stb.. stb..
@@ -160,5 +185,15 @@ class AuthService
     final static public function getErrorMessage()
     {
         return self::$errorMessage;
+    }
+
+    public function init()
+    {
+        // TODO: Implement init() method.
+    }
+
+    public function dispatch()
+    {
+        // TODO: Implement dispatch() method.
     }
 }
