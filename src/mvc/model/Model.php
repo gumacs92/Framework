@@ -7,7 +7,7 @@ namespace Framework\Mvc\Model;
 
 use Framework\Abstractions\Errorcodes\DatabaseErrorCodes;
 use Framework\Abstractions\Exceptions\DatabaseException;
-use Framework\Mvc\Database\Database;
+use Framework\Mvc\Database\MysqliDatabase;
 use ReflectionClass;
 use ReflectionProperty;
 
@@ -31,7 +31,7 @@ abstract class Model
         $classname = $namespace[sizeof($namespace)-1];
         $table = lcfirst(substr($classname, 0, -5));
 
-        $this->database = Database::Database($dbconfig);
+        $this->database = MysqliDatabase::Database($dbconfig);
         $this->table = $GLOBALS['config']['prefix'] . $table;
         $this->getFields();
     }

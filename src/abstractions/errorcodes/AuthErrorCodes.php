@@ -9,7 +9,7 @@ use Framework\Abstractions\BaseEnum;
  * Date: 2016-11-14
  * Time: 05:12 PM
  */
-abstract class AuthErrorCodes extends BaseEnum
+class AuthErrorCodes extends BaseEnum
 {
     const NOT_VALID_SESSION = 0;
     const COULDNT_AUTHENTICATE = 1;

@@ -19,53 +19,53 @@ class RouteTest extends \PHPUnit_Framework_TestCase
 
 
 
-    public function testExecute4(){
-        $this->route = new Route('/test2/:int/:params', [
-            'controller' => 'Tests\Helpers\Controllers\Test',
-            'action' => 'testWithIntParams',
-            'int' => 1,
-            'params' => 2,
-        ]);
-
-        $return = $this->route->execute('/test2/12/13/14');
-
-        $this->assertEquals(true, $return);
-    }
-
-    public function testExecute3(){
-        $this->route = new Route('/test2/:params', [
-            'controller' => 'Tests\Helpers\Controllers\Test',
-            'action' => 'testWithParams',
-            'params' => 1,
-        ]);
-
-        $return = $this->route->execute('/test2/12/13');
-
-        $this->assertEquals(true, $return);
-    }
-
-    public function testExecute2(){
-        $this->route = new Route('/test2/:int', [
-            'controller' => 'Tests\Helpers\Controllers\Test',
-            'action' => 'testWithInt',
-            'int' => 1,
-        ]);
-
-        $return = $this->route->execute('/test2/12');
-
-        $this->assertEquals(true, $return);
-    }
-
-    public function testExecute1(){
-        $this->route = new Route('/test1', [
-            'controller' => 'Tests\Helpers\Controllers\Test',
-            'action' => 'test',
-        ]);
-
-        $return = $this->route->execute('/test1');
-
-        $this->assertEquals(true, $return);
-    }
+//    public function testExecute4(){
+//        $this->route = new Route('/test2/:int/:params', [
+//            'controller' => 'Tests\Helpers\Controllers\Test',
+//            'action' => 'testWithIntParams',
+//            'int' => 1,
+//            'params' => 2,
+//        ]);
+//
+//        $return = $this->route->execute('/test2/12/13/14');
+//
+//        $this->assertEquals(true, $return);
+//    }
+//
+//    public function testExecute3(){
+//        $this->route = new Route('/test2/:params', [
+//            'controller' => 'Tests\Helpers\Controllers\Test',
+//            'action' => 'testWithParams',
+//            'params' => 1,
+//        ]);
+//
+//        $return = $this->route->execute('/test2/12/13');
+//
+//        $this->assertEquals(true, $return);
+//    }
+//
+//    public function testExecute2(){
+//        $this->route = new Route('/test2/:int', [
+//            'controller' => 'Tests\Helpers\Controllers\Test',
+//            'action' => 'testWithInt',
+//            'int' => 1,
+//        ]);
+//
+//        $return = $this->route->execute('/test2/12');
+//
+//        $this->assertEquals(true, $return);
+//    }
+//
+//    public function testExecute1(){
+//        $this->route = new Route('/test1', [
+//            'controller' => 'Tests\Helpers\Controllers\Test',
+//            'action' => 'test',
+//        ]);
+//
+//        $return = $this->route->execute('/test1');
+//
+//        $this->assertEquals(true, $return);
+//    }
 
     public function testMatchTemplateUri4(){
         $this->route = new Route('/show_post/#[0-9]{4}#/:params', [
