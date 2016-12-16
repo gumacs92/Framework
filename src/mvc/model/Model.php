@@ -116,7 +116,7 @@ abstract class Model
             $fieldvalue = $prop->getValue($obj);
             if (!in_array($fieldname, $exceptionprop) && in_array($fieldname, $this->fields)) {
                 $field_list .= $fieldname . ",";
-                $value_list .= is_numeric($fieldvalue) ? $fieldvalue . "," : "'" . $fieldvalue . "',";
+                $value_list .= (is_numeric($fieldvalue) || is_null($fieldvalue)) ? $fieldvalue . "," : "'" . $fieldvalue . "',";
             }
         }
 
@@ -170,7 +170,7 @@ abstract class Model
                 if ($this->primaryfield == $fieldname) {
                     $where = "$fieldname=$fieldvalue";
                 } else {
-                    $updatelist .= "$fieldname=" . (is_numeric($fieldvalue) ? "$fieldvalue," : "'$fieldvalue',");
+                    $updatelist .= "$fieldname=" . ((is_numeric($fieldvalue) || is_null($fieldvalue)) ? "$fieldvalue," : "'$fieldvalue',");
                 }
             }
         }
