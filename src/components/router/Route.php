@@ -136,7 +136,7 @@ class Route
     public function execute($uri = '')
     {
 
-        $uri = (empty($uri) ? (isset($_REQUEST['_uri']) ? $_REQUEST['_uri'] : '') : '');
+        $uri = (empty($uri) ? (isset($_REQUEST['_uri']) ? $_REQUEST['_uri'] : '') : $uri);
 
         if (empty($uri)) {
             return false;

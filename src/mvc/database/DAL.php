@@ -52,6 +52,8 @@ class DAL
             $value = $values[$i];
             if (is_string($value)) {
                 $valuesstring .= "'" . $this->database->escapeString($value) . "',";
+            } elseif (is_null($value)) {
+                $valuesstring .= 'null,';
             } else {
                 $valuesstring .= $values[$i] . ',';
             }
@@ -80,6 +82,8 @@ class DAL
         foreach ($where as $col => $cond) {
             if (is_string($cond)) {
                 $wherestring .= "$col LIKE '{$this->database->escapeString($cond)}',";
+            } elseif (is_null($cond)) {
+                $wherestring .= "$col = null,";
             } else {
                 $wherestring .= "$col = $cond,";
             }
@@ -105,6 +109,8 @@ class DAL
         foreach ($set as $col => $cond) {
             if (is_string($cond)) {
                 $setstring .= "$col = '{$this->database->escapeString($cond)}',";
+            } elseif (is_null($cond)) {
+                $setstring .= "$col = null,";
             } else {
                 $setstring .= "$col = $cond,";
             }
@@ -137,6 +143,8 @@ class DAL
         foreach ($where as $col => $cond) {
             if (is_string($cond)) {
                 $wherestring .= "$col LIKE '{$this->database->escapeString($cond)}',";
+            } elseif (is_null($cond)) {
+                $wherestring .= "$col = null,";
             } else {
                 $wherestring .= "$col = $cond,";
             }

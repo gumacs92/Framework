@@ -1,5 +1,5 @@
 <?php
-namespace Framework\Core;
+namespace Framework\Components\Authservice;
 
 use Framework\Abstractions\Errorcodes\AuthErrorCodes;
 use Framework\Abstractions\Exceptions\AuthServiceException;
@@ -13,15 +13,13 @@ use ReflectionClass;
  * Date: 2016-10-08
  * Time: 06:49 PM
  */
-
-
-
 class AuthService implements IComponent
 {
     private static $errorCode;
     private static $errorMessage;
 
-    final static public function serve(){
+    final static public function serve()
+    {
 //        try {
 //            if (AuthService::checkAuth()) {
 //                $this->viewModel->setAndShowView('search.php');
@@ -83,9 +81,9 @@ class AuthService implements IComponent
         if (isset($_SESSION['LAST_ACTIVITY']) && ((time() - $_SESSION['LAST_ACTIVITY']) > $GLOBALS['config']['sessiontimeout'])) {
             self::invalidateSession();
             return false;
-        }else if(!isset($_SESSION['LAST_ACTIVITY'])){
+        } else if (!isset($_SESSION['LAST_ACTIVITY'])) {
             return false;
-        }else{
+        } else {
             $_SESSION['LAST_ACTIVITY'] = time();
             return true;
         }
@@ -118,7 +116,7 @@ class AuthService implements IComponent
 //            $path = explode(DS, CURR_CONTROLLER_PATH);
 //            $size = sizeof($path);
 //            if ($path[$size - 2] == $_SESSION['auth_level']) {
-                return true;
+            return true;
 //            } else {
 //                self::$errorCode = AuthErrorCodes::NOT_RIGHT_LEVEL;
 //                self::$errorMessage = "The current level is not sufficient!";
@@ -163,8 +161,9 @@ class AuthService implements IComponent
 //        $this->user = $this->getUserByLogin($authdata['username'], $authdata['password']);
     }
 
-    final static public function getSessionAuthLevel(){
-        if(isset($_SESSION['auth_level'])){
+    final static public function getSessionAuthLevel()
+    {
+        if (isset($_SESSION['auth_level'])) {
             return $_SESSION['auth_level'];
         } else {
             return false;

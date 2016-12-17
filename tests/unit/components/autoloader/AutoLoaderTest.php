@@ -34,7 +34,7 @@ class AutoLoaderTest extends \PHPUnit_Framework_TestCase
 
         $names = $this->autoloader->getClassNames();
 
-        $this->assertEquals(TESTDIR3 . "AuthService.php", $names['Framework\Core\AuthService']);
+        $this->assertEquals(TESTDIR1 . 'authservice' . DS . "AuthService.php", $names['Framework\Components\Authservice\AuthService']);
         $this->assertEquals(TESTDIR1 . 'autoloader' . DS . "AutoLoader.php", $names['Framework\Components\Autoloader\AutoLoader']);
 
         $this->assertEquals(TESTDIR2 . 'interfaces' . DS . "IAuth.php", $names['Framework\Abstractions\Interfaces\IAuth']);
