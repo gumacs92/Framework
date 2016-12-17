@@ -1,7 +1,7 @@
 <?php
 namespace Framework\Mvc\Model;
 
-// framework/core/Model.class.php
+// framework/Core/Model.class.php
 
 // Base Model Class
 
@@ -253,7 +253,7 @@ abstract class Model
 //    public function selectByPk($pk)
 //    {
 //        $sql = "SELECT * FROM $this->table WHERE $this->primaryfield = $pk";
-//        return $this->database->getRow($sql);
+//        return $this->Database->getRow($sql);
 //
 //    }
 
@@ -265,7 +265,7 @@ abstract class Model
 //    public function total()
 //    {
 //        $sql = "SELECT COUNT(*) FROM $this->table";
-//        return $this->database->getOne($sql);
+//        return $this->Database->getOne($sql);
 //    }
 
     /**
@@ -282,7 +282,7 @@ abstract class Model
 //        } else {
 //            $sql = "SELECT * FROM $this->table WHERE $where LIMIT $offset, $limit";
 //        }
-//        return $this->database->getAll($sql);
+//        return $this->Database->getAll($sql);
 //    }
 
     /**

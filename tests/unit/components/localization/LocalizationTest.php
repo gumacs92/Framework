@@ -24,9 +24,9 @@ class LocalizationTest extends \PHPUnit_Framework_TestCase
     {
 //        $_REQUEST['lang'] = 'en';
 //
-//        $localization = new Localization();
-//        $localization->init();
-//        $localization->dispatch();
+//        $Localization = new Localization();
+//        $Localization->init();
+//        $Localization->dispatch();
 //
 //        $this->assertEquals('testEn', __('test'));
     }

@@ -18,12 +18,12 @@ class AutoLoaderTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         if(!defined("TESTDIR1")){
-            define("TESTDIR1", getcwd() . DS . 'src' . DS . 'components' . DS);
-            define("TESTDIR2", getcwd() . DS . 'src' . DS . 'abstractions' . DS);
-            define("TESTDIR3", getcwd() . DS . 'src' . DS . 'core' . DS);
+            define("TESTDIR1", getcwd() . DS . 'src' . DS . 'Components' . DS);
+            define("TESTDIR2", getcwd() . DS . 'src' . DS . 'Abstractions' . DS);
+            define("TESTDIR3", getcwd() . DS . 'src' . DS . 'Core' . DS);
         }
-        require_once $_SERVER['DOCUMENT_ROOT'] . DS . 'src' . DS . 'abstractions' . DS . 'interfaces' . DS . "IComponent.php";
-        require_once $_SERVER['DOCUMENT_ROOT'] . DS . 'src' . DS . 'components' . DS . 'autoloader' . DS . "AutoLoader.php";
+        require_once $_SERVER['DOCUMENT_ROOT'] . DS . 'src' . DS . 'Abstractions' . DS . 'Interfaces' . DS . "IComponent.php";
+        require_once $_SERVER['DOCUMENT_ROOT'] . DS . 'src' . DS . 'Components' . DS . 'Autoloader' . DS . "AutoLoader.php";
 
         $this->autoloader = AutoLoader::getAutoloader();
     }
@@ -35,10 +35,10 @@ class AutoLoaderTest extends \PHPUnit_Framework_TestCase
         $names = $this->autoloader->getClassNames();
 
         $this->assertEquals(TESTDIR3 . "AuthService.php", $names['Framework\Core\AuthService']);
-        $this->assertEquals(TESTDIR1 . 'autoloader' . DS . "AutoLoader.php", $names['Framework\Components\Autoloader\AutoLoader']);
+        $this->assertEquals(TESTDIR1 . 'Autoloader' . DS . "AutoLoader.php", $names['Framework\Components\Autoloader\AutoLoader']);
 
-        $this->assertEquals(TESTDIR2 . 'interfaces' . DS . "IAuth.php", $names['Framework\Abstractions\Interfaces\IAuth']);
-        $this->assertEquals(TESTDIR2 . 'interfaces' . DS . "IComponent.php", $names['Framework\Abstractions\Interfaces\IComponent']);
+        $this->assertEquals(TESTDIR2 . 'Interfaces' . DS . "IAuth.php", $names['Framework\Abstractions\Interfaces\IAuth']);
+        $this->assertEquals(TESTDIR2 . 'Interfaces' . DS . "IComponent.php", $names['Framework\Abstractions\Interfaces\IComponent']);
     }
 
     public function testDispatch(){

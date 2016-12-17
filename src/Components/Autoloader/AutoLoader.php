@@ -12,9 +12,8 @@ use Framework\Abstractions\Interfaces\IComponent;
  * Time: 04:34 PM
  */
 include __DIR__ .
-    DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' .
-    DIRECTORY_SEPARATOR . 'abstractions' .
-    DIRECTORY_SEPARATOR . 'interfaces' .
+    DIRECTORY_SEPARATOR .
+    DIRECTORY_SEPARATOR . 'Interfaces' .
     DIRECTORY_SEPARATOR . 'IComponent.php';
 
 class AutoLoader implements IComponent

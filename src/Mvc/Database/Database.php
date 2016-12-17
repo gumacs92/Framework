@@ -9,8 +9,8 @@ use mysqli;
 
 /**
  *================================================================
- *framework/database/Mysql.class.php
- *database operation class
+ *framework/Database/Mysql.class.php
+ *Database operation class
  *================================================================
  */
 class Database
@@ -21,7 +21,7 @@ class Database
     private $conn = false;  //DB connection resources
 
     /**
-     * Constructor, to connect to database, select database and set charset
+     * Constructor, to connect to Database, select Database and set charset
      * @param $config string configuration array
      */
     private function __construct($config = array())
