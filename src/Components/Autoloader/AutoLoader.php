@@ -12,6 +12,9 @@ use Framework\Abstractions\Interfaces\IComponent;
  * Time: 04:34 PM
  */
 include __DIR__ .
+    DIRECTORY_SEPARATOR . '..' .
+    DIRECTORY_SEPARATOR . '..' .
+    DIRECTORY_SEPARATOR . 'Abstractions' .
     DIRECTORY_SEPARATOR . 'Interfaces' .
     DIRECTORY_SEPARATOR . 'IComponent.php';
 
