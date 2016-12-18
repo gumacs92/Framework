@@ -12,39 +12,46 @@ use Framework\Abstractions\Exceptions\ViewException;
 
 class ViewModel
 {
-    /* @var View $view */
     private $view;
     private $path;
-    private $props = [];
+    private $entities = [];
 
     public function __construct($path)
     {
         $this->path = $path;
     }
 
-    public function set($key, $value)
-    {
-        $this->props[$key] = $value;
+    public function has($key){
+        return array_key_exists($key, $this->entities);
     }
 
-    public function get($key)
+    public function set($key, $value)
     {
-        return $this->props[$key];
+        $this->entities[$key] = $value;
+    }
+
+    public function getReal($key)
+    {
+        return $this->entities[$key];
+    }
+
+    public function get($key){
+        return htmlspecialchars($this->entities[$key]);
     }
 
     public function delete($key)
     {
-        unset($this->props[$key]);
+        unset($this->entities[$key]);
     }
 
     public function setView($view)
     {
-        $this->view = new View($this->path, $view);
+        $this->view = $view;
     }
 
     public function showView()
     {
-        $view = $this->path . DIRECTORY_SEPARATOR . $this->view->getView();
+        $view = $this->path . DIRECTORY_SEPARATOR . $this->view;
         if (file_exists($view)) {
             require $view;
             return;
@@ -58,7 +65,7 @@ class ViewModel
         $this->showView();
     }
 
-    public function setAndShowCurrentActionView()
+    public function setAndShowActionView()
     {
         $action_name = debug_backtrace()[1]['function'];
         $action = substr($action_name, 0, -6) . '.php';

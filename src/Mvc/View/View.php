@@ -40,6 +40,4 @@ class View
     {
         return $this->view;
     }
-
-
 }
