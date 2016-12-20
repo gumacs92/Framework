@@ -16,7 +16,7 @@ class LocalizationTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         if (!defined('LOCALE_PATH')) {
-            define('LOCALE_PATH', getcwd() . DS . 'tests' . DS . 'helpers' . DS . 'locale' . DS);
+            define('LOCALE_PATH', getcwd() . DS . 'tests' . DS . 'Helpers' . DS . 'locale' . DS);
         }
     }
 

@@ -18,7 +18,7 @@ POT-Creation-Date: 2016-12-09 14:33+0100
 PO-Revision-Date: 2016-12-09 14:35+0100
 Language: hu
 X-Generator: Poedit 1.8.11
-X-Poedit-Basepath: ../../../../../Framework
+X-Poedit-Basepath: ../../../../../framework
 Plural-Forms: nplurals=2; plural=(n != 1);
 X-Poedit-SourceCharset: UTF-8
 X-Poedit-KeywordsList: __

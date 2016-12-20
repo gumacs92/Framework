@@ -11,7 +11,7 @@ use Framework\Abstractions\Interfaces\IComponent;
  * Date: 2016-11-04
  * Time: 04:34 PM
  */
-include __DIR__ .
+require_once __DIR__ .
     DIRECTORY_SEPARATOR . '..' .
     DIRECTORY_SEPARATOR . '..' .
     DIRECTORY_SEPARATOR . 'Abstractions' .
