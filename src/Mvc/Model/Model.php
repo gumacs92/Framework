@@ -29,7 +29,7 @@ abstract class Model
 
         $namespace = explode("\\", get_class($this));
         $classname = $namespace[sizeof($namespace) - 1];
-        $table = lcfirst(substr($classname, 0, -5));
+        $table = strtolower(substr($classname, 0, -5));
 
         $this->database = Database::Database($dbconfig);
         $this->table = $GLOBALS['config']['prefix'] . $table;
