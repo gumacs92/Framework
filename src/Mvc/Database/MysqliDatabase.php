@@ -10,8 +10,8 @@ use mysqli;
 
 /**
  *================================================================
- *framework/database/Mysql.class.php
- *database operation class
+ *framework/Database/Mysql.class.php
+ *Database operation class
  *================================================================
  */
 class MysqliDatabase implements IDatabase

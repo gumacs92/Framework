@@ -10,8 +10,8 @@ use Framework\Components\Autoloader\AutoLoader;
 
 require $_SERVER['DOCUMENT_ROOT'] .
     DIRECTORY_SEPARATOR . 'src' .
-    DIRECTORY_SEPARATOR . 'components' .
-    DIRECTORY_SEPARATOR . 'autoloader' .
+    DIRECTORY_SEPARATOR . 'Components' .
+    DIRECTORY_SEPARATOR . 'Autoloader' .
     DIRECTORY_SEPARATOR . 'AutoLoader.php';
 
 $autoloader = AutoLoader::getAutoloader();

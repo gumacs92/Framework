@@ -40,9 +40,9 @@ class RouterTest extends \PHPUnit_Framework_TestCase
         $path = "D:" .
             DIRECTORY_SEPARATOR . "asdf" .
             DIRECTORY_SEPARATOR . "asdfas" .
-            DIRECTORY_SEPARATOR . "controllers" .
+            DIRECTORY_SEPARATOR . "Controllers" .
             DIRECTORY_SEPARATOR . "dfas";
-        $what = 'controllers';
+        $what = 'Controllers';
         $with = 'views';
         $view_path = preg_replace('/' . $what . '/', $with, $path);
         $expected_path = "D:" .

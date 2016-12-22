@@ -12,9 +12,9 @@ use Framework\Abstractions\Interfaces\IComponent;
  * Time: 04:34 PM
  */
 include __DIR__ .
-    DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' .
-    DIRECTORY_SEPARATOR . 'abstractions' .
-    DIRECTORY_SEPARATOR . 'interfaces' .
+    DIRECTORY_SEPARATOR . '..' .
+    DIRECTORY_SEPARATOR . '..' .
+    DIRECTORY_SEPARATOR . 'Interfaces' .
     DIRECTORY_SEPARATOR . 'IComponent.php';
 
 class AutoLoader implements IComponent
@@ -25,25 +25,23 @@ class AutoLoader implements IComponent
     private $classNames = array();
 
     private $namespacePrefix;
-    private $namespaceUpperCase;
 
-    private function __construct($namespaceUpperCase = true, $namespacePrefix = '')
+    private function __construct($namespacePrefix = '')
     {
         if (!defined('DS')) {
             define("DS", DIRECTORY_SEPARATOR);
         }
 
         $this->namespacePrefix = empty($namespacePrefix) ? $_SERVER['DOCUMENT_ROOT'] : $namespacePrefix;
-        $this->namespaceUpperCase = $namespaceUpperCase;
     }
 
     /**
      * @return mixed
      */
-    public static function getAutoloader($namespaceUpperCase = true, $namespacePrefix = '')
+    public static function getAutoloader($namespacePrefix = '')
     {
         if (is_null(self::$autoloader)) {
-            self::$autoloader = new AutoLoader($namespaceUpperCase, $namespacePrefix);
+            self::$autoloader = new AutoLoader($namespacePrefix);
         }
         return self::$autoloader;
     }
@@ -54,7 +52,7 @@ class AutoLoader implements IComponent
     public function registerDirectory($dirName, $namespace)
     {
         $namespace_parts = explode('\\', $namespace);
-        $namespace_name = $this->setCase($namespace_parts[sizeof($namespace_parts) - 1]);
+        $namespace_name = $namespace_parts[sizeof($namespace_parts) - 1];
 
         $di = new DirectoryIterator($dirName);
         /* @var DirectoryIterator $file */
@@ -63,7 +61,7 @@ class AutoLoader implements IComponent
             if ($file->isDir() && !$file->isLink() && !$file->isDot()) {
                 // recurse into directories generic than a few special ones
                 $dir_parts = explode(DS, rtrim($file->getRealPath(), DS));
-                $dir_name = $this->setCase($dir_parts[sizeof($dir_parts) - 1]);
+                $dir_name = $dir_parts[sizeof($dir_parts) - 1];
 
                 if ($namespace_name === $dir_name) {
                     self::registerDirectory($file->getRealPath(), implode('\\', $namespace_parts));
@@ -100,15 +98,6 @@ class AutoLoader implements IComponent
     {
         if (isset($this->classNames[$className])) {
             require_once $this->classNames[$className];
-        }
-    }
-
-    public function setCase($name)
-    {
-        if ($this->namespaceUpperCase) {
-            return ucfirst($name);
-        } else {
-            return lcfirst($name);
         }
     }
 

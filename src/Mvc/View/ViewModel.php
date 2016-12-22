@@ -56,7 +56,7 @@ class ViewModel
             require $view;
             return;
         }
-        throw new ViewException("Fatal Error: view does not exist: " . $view);
+        throw new ViewException("Fatal Error: View does not exist: " . $view);
     }
 
     public function setAndShowView($view)

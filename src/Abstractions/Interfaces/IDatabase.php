@@ -12,7 +12,7 @@ namespace Framework\Abstractions\Interfaces;
 interface IDatabase
 {
 
-    /**Creates the database instance with the given config
+    /**Creates the Database instance with the given config
      * @param array $config
      */
     public static function Database($config = array());

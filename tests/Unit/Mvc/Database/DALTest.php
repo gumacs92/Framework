@@ -22,7 +22,7 @@ class DALTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        Core::init(getcwd() . '\\tests\\helpers\\config\\');
+        Core::init(getcwd() . '\\tests\\Helpers\\config\\');
 
         $this->dal = new DAL('test');
     }
