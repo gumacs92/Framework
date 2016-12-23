@@ -29,7 +29,7 @@ class RouteTest extends \PHPUnit_Framework_TestCase
 
         $return = $this->route->execute('/test2/12/13/14');
 
-        $this->assertEquals(true, $return);
+        $this->assertNotFalse($return);
     }
 
     public function testExecute3(){
@@ -41,7 +41,7 @@ class RouteTest extends \PHPUnit_Framework_TestCase
 
         $return = $this->route->execute('/test2/12/13');
 
-        $this->assertEquals(true, $return);
+        $this->assertNotFalse($return);
     }
 
     public function testExecute2(){
@@ -53,7 +53,7 @@ class RouteTest extends \PHPUnit_Framework_TestCase
 
         $return = $this->route->execute('/test2/12');
 
-        $this->assertEquals(true, $return);
+        $this->assertNotFalse($return);
     }
 
     public function testExecute1(){
@@ -64,7 +64,7 @@ class RouteTest extends \PHPUnit_Framework_TestCase
 
         $return = $this->route->execute('/test1');
 
-        $this->assertEquals(true, $return);
+        $this->assertNotFalse($return);
     }
 
     public function testMatchTemplateUri4(){

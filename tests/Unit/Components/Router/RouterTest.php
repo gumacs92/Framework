@@ -20,6 +20,7 @@ class RouterTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->router = new Router();
+        $this->router->init();
 
         $this->router->addRoute(new Route('/test1',
             [
@@ -56,7 +57,7 @@ class RouterTest extends \PHPUnit_Framework_TestCase
 
     public function testExecute(){
         $_REQUEST['_uri'] = '/test1/12';
-        $return = $this->router->dispatch();
+        $return = $this->router->start();
 
         $this->assertEquals(true, $return);
     }

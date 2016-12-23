@@ -42,7 +42,7 @@ class AutoLoaderTest extends \PHPUnit_Framework_TestCase
     }
 
     public function testDispatch(){
-        $this->autoloader->dispatch();
+        $this->autoloader->start();
 
 //        $testClass1 = new \Framework\Core\ComponentHandler();
         $testClass2 = new ViewModel('');

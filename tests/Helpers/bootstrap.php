@@ -22,4 +22,4 @@ define('TESTS', getcwd() . DS . 'tests' . DS);
 $autoloader->addDirectory(SRC, 'Framework');
 $autoloader->addDirectory(TESTS, 'Tests');
 $autoloader->init();
-$autoloader->dispatch();
+$autoloader->start();

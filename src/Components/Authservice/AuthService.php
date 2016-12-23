@@ -5,6 +5,7 @@ use Framework\Abstractions\Errorcodes\AuthErrorCodes;
 use Framework\Abstractions\Exceptions\AuthServiceException;
 use Framework\Abstractions\Interfaces\IAuth;
 use Framework\Abstractions\Interfaces\IComponent;
+use Framework\Components\AbstractComponent;
 use ReflectionClass;
 
 /**
@@ -13,7 +14,7 @@ use ReflectionClass;
  * Date: 2016-10-08
  * Time: 06:49 PM
  */
-class AuthService implements IComponent
+class AuthService extends AbstractComponent
 {
     private static $errorCode;
     private static $errorMessage;
@@ -191,7 +192,7 @@ class AuthService implements IComponent
         // TODO: Implement init() method.
     }
 
-    public function dispatch()
+    public function start()
     {
         // TODO: Implement dispatch() method.
     }

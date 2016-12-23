@@ -143,22 +143,9 @@ class Route
         }
 
         if ($this->matchTemplateUri($uri)) {
-            $controller_name =
-                (isset($this->uriSettings['namespace']) ? $this->uriSettings['namespace'] . '\\' : '') .
-                (isset($this->uriSettings['module']) ? $this->uriSettings['module'] . '\\' : '') .
-                $this->uriSettings['controller'] . 'Controller';
-            $action_name = $this->uriSettings['action'] . 'Action';
-            $int = isset($this->uriSettings['int']) ? $this->uriSettings['int'] : null;
-            $params = isset($this->uriSettings['params']) ? explode('/', $this->uriSettings['params']) : null;
-
-            $arguments[] = $int;
-            $arguments[] = $params;
-
-            $controller = new $controller_name();
-            $controller->$action_name(...$arguments);
-
-            return true;
+            return $this->uriSettings;
         }
+
         return false;
     }
 

@@ -21,13 +21,13 @@ class TestController
         echo "Hello testWithIntAction " . $int . "\n";
     }
 
-    public function testWithParamsAction($params)
+    public function testWithParamsAction($param)
     {
-        echo "Hello testWithParamsAction " . $params . "\n";
+        echo "Hello testWithParamsAction " . $param . "\n";
     }
 
-    public function testWithIntParamsAction($int, $params)
+    public function testWithIntParamsAction($int, $param1, $param2)
     {
-        echo "Hello testWithIntParamsAction " . $int . " " . $params[0] . " " . $params[1] . "\n";
+        echo "Hello testWithIntParamsAction " . $int . " " . $param1 . " " . $param2 . "\n";
     }
 }

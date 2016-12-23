@@ -8,11 +8,11 @@
 
 namespace Framework\Components\Localization;
 
-use Framework\Abstractions\Interfaces\IComponent;
+use Framework\Components\AbstractComponent;
 use Gettext\Translations;
 use Gettext\Translator;
 
-class Localization implements IComponent
+class Localization extends AbstractComponent
 {
 
     public function init($default = 'en')
@@ -30,7 +30,7 @@ class Localization implements IComponent
         };
     }
 
-    public function dispatch()
+    public function start()
     {
         //TODO multiplet ways to translate
         $translations = Translations::fromPoFile(LOCALE_PATH . LANGUAGE . DS . 'LC_MESSAGES' . DS . 'messages.po');

@@ -9,8 +9,7 @@ use ReflectionClass;
 abstract class Controller {
     /* ViewModel $viewModel */
     protected $viewModel;
-
-    //TODO dispatcher
+    protected $dispatcher;
 
     public function __construct(){
         $reflector = new ReflectionClass(get_class($this));
@@ -20,6 +19,10 @@ abstract class Controller {
         $view_path = preg_replace('#' . $what .'#', $with, $controller_path);
 
         $this->viewModel = new ViewModel($view_path);
+    }
+
+    public function setDispatcher($dispatcher){
+        $this->dispatcher = $dispatcher;
     }
 
 

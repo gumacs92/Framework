@@ -3,7 +3,7 @@
 namespace Framework\Components\Autoloader;
 
 use DirectoryIterator;
-use Framework\Abstractions\Interfaces\IComponent;
+use Framework\Components\AbstractComponent;
 
 /**
  * Created by PhpStorm.
@@ -11,13 +11,8 @@ use Framework\Abstractions\Interfaces\IComponent;
  * Date: 2016-11-04
  * Time: 04:34 PM
  */
-include __DIR__ .
-    DIRECTORY_SEPARATOR . '..' .
-    DIRECTORY_SEPARATOR . '..' .
-    DIRECTORY_SEPARATOR . 'Interfaces' .
-    DIRECTORY_SEPARATOR . 'IComponent.php';
 
-class AutoLoader implements IComponent
+class AutoLoader extends AbstractComponent
 {
     static private $autoloader;
 
@@ -32,7 +27,7 @@ class AutoLoader implements IComponent
             define("DS", DIRECTORY_SEPARATOR);
         }
 
-        $this->namespacePrefix = empty($namespacePrefix) ? $_SERVER['DOCUMENT_ROOT'] : $namespacePrefix;
+        $this->namespacePrefix = empty($namespacePrefix) ? '' : $namespacePrefix;
     }
 
     /**
@@ -108,7 +103,7 @@ class AutoLoader implements IComponent
         }
     }
 
-    public function dispatch()
+    public function start()
     {
         spl_autoload_register(array($this, 'loadClass'));
     }

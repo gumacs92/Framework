@@ -13,5 +13,7 @@ interface IComponent
 {
     public function init();
 
-    public function dispatch();
+    public function start();
+
+    public function addHandler($handler);
 }

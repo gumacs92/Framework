@@ -37,7 +37,7 @@ class LocalizationTest extends \PHPUnit_Framework_TestCase
 
         $localization = new Localization();
         $localization->init();
-        $localization->dispatch();
+        $localization->start();
 
         $this->assertEquals('testHu', __('test'));
     }

@@ -10,5 +10,6 @@ namespace Framework\Abstractions\Exceptions;
 
 
 class ComponentException extends \Exception
+    IComponent
 {
 }

@@ -8,13 +8,17 @@
  */
 
 namespace Framework\Components\Router;
-use Framework\Abstractions\Interfaces\IComponent;
+use Framework\Abstractions\Interfaces\IDispatcher;
+use Framework\Components\AbstractComponent;
 
-class Router implements IComponent
+class Router extends AbstractComponent
 {
     private $routes = [];
     /* @var Route $notFound */
     private $notFound;
+
+    /* @var IDispatcher $dispatcher */
+    private $dispatcher;
 
     public function add($uri, $uri_settings, $uri_name = '')
     {
@@ -37,12 +41,13 @@ class Router implements IComponent
     }
 
 
-    public function dispatch($uri = '')
+    public function start($uri = '')
     {
         /* @var Route $route */
         foreach ($this->routes as $route){
             $return = $route->execute($uri);
             if($return){
+                $this->dispatcher->dispatch($return);
                 return true;
             }
         }
@@ -55,6 +60,10 @@ class Router implements IComponent
 
     public function init()
     {
-        // TODO: Implement init() method.
+        if(!is_null($this->handler) && $this->handler->has('dispatcher')){
+            $this->dispatcher = $this->handler->get('dispatcher');
+        } else {
+            $this->dispatcher = new DispatcherLight();
+        }
     }
 }
