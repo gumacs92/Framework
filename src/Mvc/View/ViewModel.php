@@ -44,6 +44,41 @@ class ViewModel
         unset($this->entities[$key]);
     }
 
+    public function setErrors($value)
+    {
+        $this->entities['errors'] = $value;
+    }
+
+    public function printErrors($key = '', $errors = [])
+    {
+        if (empty($errors)) {
+            if (array_key_exists('errors', $this->entities)) {
+                $errors = $this->entities['errors'];
+            } else {
+                return;
+            }
+        }
+
+        foreach ($errors as $k => $v) {
+            if (empty($key)) {
+                if (is_array($v)) {
+                    $this->printErrors($key, $v);
+                } else {
+                    echo $v . '<br>';
+                }
+            } else {
+                if ($key === $k) {
+                    if (is_array($v)) {
+                        $this->printErrors('', $v);
+                    } else {
+                        echo $v . '<br>';
+                    }
+                    return;
+                }
+            }
+        }
+    }
+
     public function setView($view)
     {
         $this->view = $view;
