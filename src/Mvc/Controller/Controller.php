@@ -22,6 +22,9 @@ abstract class Controller {
         $this->viewModel = new ViewModel($view_path);
     }
 
+    abstract public function beforeAction();
+
+    abstract public function afterAction();
 
     public function redirect($url){
         header("Location:$url");

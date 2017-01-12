@@ -159,7 +159,10 @@ class Route
             $arguments[] = $params;
 
             $controller = new $controller_name();
+
+            $controller->beforeAction();
             $controller->$action_name(...$arguments);
+            $controller->afterAction();
 
             return true;
         }
