@@ -17,7 +17,19 @@ class RouteTest extends \PHPUnit_Framework_TestCase
     /* @var Route $route */
     private $route;
 
+    public function testExecute5(){
+        //TODO be able to give params as array and be able to set int as real number not just string
+        $this->route = new Route('/', [
+            'controller' => 'Tests\Helpers\Controllers\Test',
+            'action' => 'testWithIntParams',
+            'int' => '10',
+            'params' => 'asdf/fdsa',
+        ]);
 
+        $return = $this->route->execute('/');
+
+        $this->assertEquals(true, $return);
+    }
 
     public function testExecute4(){
         $this->route = new Route('/test2/:int/:params', [

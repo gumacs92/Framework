@@ -50,6 +50,10 @@ class Route
         $template_positions = [];
         $templates_in_order = [];
 
+        if(sizeof($uri_pieces) === 1 && empty($uri_pieces[0])){
+            $uri_pieces = ['/'];
+        }
+
         foreach ($uri_pieces as $piece) {
             if (!preg_match('/^([\/]?(\/|:namespace|:module|:controller|:action|:params|:int|(\#[\S]+\#)|[a-zA-Z0-9\_\-]))+$/', $piece)) {
                 throw new RouteException("Fatal error: Invalid uri: template is malformed");
