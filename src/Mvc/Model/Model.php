@@ -119,7 +119,7 @@ abstract class Model
                 if (is_null($fieldvalue)) {
                     $value_list .= "null,";
                 } else {
-                    $value_list .= is_numeric($fieldvalue) ? $fieldvalue . "," : "'" . $fieldvalue . "',";
+                    $value_list .= is_numeric($fieldvalue) ? $this->database->escapeString($fieldvalue) . "," : "'" . $fieldvalue . "',";
                 }
             }
         }
@@ -177,7 +177,7 @@ abstract class Model
                     if (is_null($fieldvalue)) {
                         $updatelist .= "$fieldname=null,";
                     } else {
-                        $updatelist .= "$fieldname=" . (is_numeric($fieldvalue) ? "$fieldvalue," : "'$fieldvalue',");
+                        $updatelist .= "$fieldname=" . (is_numeric($fieldvalue) ? "$fieldvalue," : "'{$this->database->escapeString($fieldvalue)}',");
                     }
                 }
 
